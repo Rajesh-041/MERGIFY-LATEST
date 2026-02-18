@@ -1,0 +1,67 @@
+CREATE TABLE departement2(
+    DNAME VARCHAR2(20),
+    DNUMBER NUMBER PRIMARY KEY,
+    MGRSSN NUMBER(9),
+    MGRSTARTDATE DATE
+);
+CREATE TABLE dept_locations2 (
+    DNUMBER NUMBER,
+    DLOCATION VARCHAR2(20)
+);
+CREATE TABLE project2 (
+    PNAME VARCHAR2(20),
+    PNUMBER NUMBER PRIMARY KEY,
+    PLOCATION VARCHAR2(20),
+    DNUM NUMBER
+);
+CREATE TABLE works_on2 (
+    ESSN NUMBER(9),
+    PNO NUMBER,
+    HOURS NUMBER(5,2)
+);
+CREATE TABLE dependent2 (
+    ESSN NUMBER(9),
+    DEPENDENT_NAME VARCHAR2(20),
+    SEX CHAR(1),
+    BDATE DATE,
+    RELATIONSHIP VARCHAR2(15)
+);
+INSERT ALL
+  INTO employee2 VALUES ('Ravi','K','Kumar',123456789,TO_DATE('09-JAN-95','DD-MON-YY'),'Bengaluru','M',30000,333445555,5)
+  INTO employee2 VALUES ('Joseph','T','Paul',333445555,TO_DATE('08-DEC-94','DD-MON-YY'),'Chennai','M',40000,888665555,5)
+  INTO employee2 VALUES ('Sita','J','Devi',999887777,TO_DATE('19-JUL-98','DD-MON-YY'),'Chennai','F',25000,333445555,4)
+  INTO employee2 VALUES ('Ayesha','A','Begum',453453453,TO_DATE('31-JUL-02','DD-MON-YY'),'Hyderabad','F',26000,333445555,5)
+  INTO employee2 VALUES ('Thomas','E','George',888665555,TO_DATE('10-NOV-97','DD-MON-YY'),'Kochi','M',55000,NULL,1)
+SELECT * FROM dual;
+INSERT ALL
+  INTO department2 VALUES ('Research',5,333445555,TO_DATE('22-MAY-78','DD-MON-YY'))
+  INTO department2 VALUES ('Administration',4,999887777,TO_DATE('01-JAN-85','DD-MON-YY'))
+  INTO department2 VALUES ('Headquarters',1,888665555,TO_DATE('19-JUN-71','DD-MON-YY'))
+SELECT * FROM dual;
+INSERT ALL
+  INTO dept_locations2 VALUES (1,'Chennai')
+  INTO dept_locations2 VALUES (4,'Chennai')
+  INTO dept_locations2 VALUES (5,'Hyderabad')
+SELECT * FROM dual;
+INSERT ALL
+  INTO project2 VALUES ('ProductX',1,'Bengaluru',5)
+  INTO project2 VALUES ('ProductY',2,'Hyderabad',5)
+  INTO project2 VALUES ('ProductZ',3,'Chennai',4)
+  INTO project2 VALUES ('Computerization',10,'Chennai',4)
+  INTO project2 VALUES ('Reorganization',20,'Chennai',1)
+SELECT * FROM dual;
+INSERT ALL
+  INTO works_on2 VALUES (123456789,1,30)
+  INTO works_on2 VALUES (333445555,2,20)
+  INTO works_on2 VALUES (999887777,3,15)
+  INTO works_on2 VALUES (453453453,2,25)
+  INTO works_on2 VALUES (888665555,20,NULL)
+SELECT * FROM dual;
+INSERT ALL
+  INTO dependent2 VALUES (333445555,'Anu','F',TO_DATE('05-APR-76','DD-MON-YY'),'DAUGHTER')
+  INTO dependent2 VALUES (333445555,'Rahul','M',TO_DATE('25-OCT-73','DD-MON-YY'),'SON')
+  INTO dependent2 VALUES (999887777,'Pooja','F',TO_DATE('03-MAY-80','DD-MON-YY'),'SPOUSE')
+  INTO dependent2 VALUES (453453453,'Fatima','F',TO_DATE('12-JUN-90','DD-MON-YY'),'DAUGHTER')
+  INTO dependent2 VALUES (888665555,'John','M',TO_DATE('10-AUG-70','DD-MON-YY'),'SPOUSE')
+SELECT * FROM dual;
+
